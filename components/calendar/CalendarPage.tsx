@@ -150,6 +150,7 @@ export function CalendarPage() {
               value={monthNote}
               accentColor={theme.accentColor}
               onChange={updateNotes}
+              dark={dark}
             />
             <CalendarGrid
               days={days}
