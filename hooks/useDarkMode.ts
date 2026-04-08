@@ -11,6 +11,8 @@ export function useDarkMode() {
     setDark(stored);
     if (stored) {
       document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark"); 
     }
   }, []);
 

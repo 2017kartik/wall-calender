@@ -17,7 +17,7 @@ const config: Config = {
           muted: "rgba(30,111,204,0.18)",
         },
       },
-      fontFamily: {
+      fontFamily: { 
         sans: ["Inter", "sans-serif"],
       },
       keyframes: {

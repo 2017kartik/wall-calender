@@ -13,7 +13,7 @@ export function ThemeToggle({ dark, onToggle }: ThemeToggleProps) {
       aria-checked={dark}
       aria-label="Toggle dark mode"
       className={`
-        relative inline-flex h-7 w-[52px] shrink-0 cursor-pointer items-center rounded-full 
+        relative inline-flex h-7 w-13 shrink-0 cursor-pointer items-center rounded-full 
         border-2 border-transparent transition-colors duration-300 ease-in-out 
         focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75
         ${dark ? "bg-zinc-700" : "bg-gray-300/80"}
@@ -23,20 +23,19 @@ export function ThemeToggle({ dark, onToggle }: ThemeToggleProps) {
       }}
     >
       <span className="sr-only">Toggle dark mode</span>
-      
+
       {/* Sliding Thumb */}
       <span
         className={`
-          pointer-events-none relative inline-block h-5 w-5 transform rounded-full 
-          bg-white shadow-md transition duration-300 ease-in-out flex items-center justify-center
-          ${dark ? "translate-x-7" : "translate-x-0.5"}
-        `}
+    pointer-events-none relative flex h-5 w-5 transform rounded-full 
+    bg-white shadow-md transition duration-300 ease-in-out items-center justify-center
+    ${dark ? "translate-x-7" : "translate-x-0.5"}
+  `}
       >
         {/* Sun Icon */}
         <svg
-          className={`absolute h-3.5 w-3.5 text-amber-500 transition-opacity duration-300 ${
-            dark ? "opacity-0" : "opacity-100"
-          }`}
+          className={`absolute h-3.5 w-3.5 text-amber-500 transition-opacity duration-300 ${dark ? "opacity-0" : "opacity-100"
+            }`}
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -50,9 +49,8 @@ export function ThemeToggle({ dark, onToggle }: ThemeToggleProps) {
 
         {/* Moon Icon */}
         <svg
-          className={`absolute h-3.5 w-3.5 text-zinc-700 transition-opacity duration-300 ${
-            dark ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute h-3.5 w-3.5 text-zinc-700 transition-opacity duration-300 ${dark ? "opacity-100" : "opacity-0"
+            }`}
           fill="currentColor"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"

@@ -37,7 +37,7 @@ export function CalendarHero({
         sizes="(max-width: 768px) 100vw, 600px"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-transparent" />
 
       <div className="absolute bottom-0 left-0 right-0 z-10" style={{ height: "96px" }}>
         <svg
@@ -62,7 +62,7 @@ export function CalendarHero({
             onClick={onPrev}
             disabled={disabled}
             aria-label="Previous month"
-            className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/28 transition-colors disabled:opacity-30 text-white text-lg leading-none"
+            className="w-8 h-8 shrink-0 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/28 transition-colors disabled:opacity-30 text-white text-lg leading-none"
           >
             ‹
           </button>
@@ -82,7 +82,7 @@ export function CalendarHero({
             onClick={onNext}
             disabled={disabled}
             aria-label="Next month"
-            className="w-8 h-8 flex-shrink-0 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/28 transition-colors disabled:opacity-30 text-white text-lg leading-none"
+            className="w-8 h-8 shrink-0 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/28 transition-colors disabled:opacity-30 text-white text-lg leading-none"
           >
             ›
           </button>

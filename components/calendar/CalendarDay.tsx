@@ -6,6 +6,7 @@ interface CalendarDayProps {
   cell: DayCell;
   accentColor: string;
   accentMuted: string;
+  dark: boolean;
   onClick: (date: DateString) => void;
   onHover: (date: DateString | null) => void;
 }
@@ -16,6 +17,7 @@ export function CalendarDay({
   accentMuted,
   onClick,
   onHover,
+  dark,
 }: CalendarDayProps) {
   const { date, dayOfMonth, isCurrentMonth, isToday, rangeState, holiday } = cell;
 
@@ -44,9 +46,9 @@ export function CalendarDay({
   if (isSelected) {
     textClass = "text-white";
   } else if (isCurrentMonth) {
-    textClass = "text-zinc-800 dark:text-zinc-100"; // High contrast for active days
+    textClass = dark ? "text-zinc-100" : "text-zinc-800"; 
   } else {
-    textClass = "text-zinc-400 dark:text-zinc-600"; // Muted for out-of-month days
+    textClass = dark ? "text-zinc-600" : "text-zinc-400"; 
   }
 
   return (
@@ -69,7 +71,7 @@ export function CalendarDay({
         onClick={() => onClick(date)}
         className={`relative z-10 w-8 h-8 flex items-center justify-center rounded-full text-sm transition-transform duration-200
           ${textClass}
-          ${isToday && !isSelected ? "border border-gray-300 dark:border-zinc-500 font-bold" : ""}
+          ${isToday && !isSelected ? `border font-bold ${dark ? "border-zinc-500" : "border-gray-300"}` : ""}
           ${!isCurrentMonth ? "opacity-80" : "hover:scale-110"}
         `}
         style={{

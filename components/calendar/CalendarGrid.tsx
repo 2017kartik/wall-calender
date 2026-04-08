@@ -9,6 +9,7 @@ interface CalendarGridProps {
   accentColor: string;
   accentMuted: string;
   animClass: string;
+  dark: boolean;
   onDayClick: (date: DateString) => void;
   onDayHover: (date: DateString | null) => void;
 }
@@ -20,6 +21,7 @@ export function CalendarGrid({
   animClass,
   onDayClick,
   onDayHover,
+  dark,
 }: CalendarGridProps) {
   return (
     <div className={`flex-1 px-4 sm:px-5 pt-3 pb-4 ${animClass}`} role="grid" aria-label="Calendar grid">
@@ -31,7 +33,7 @@ export function CalendarGrid({
               key={h}
               className="text-center text-[9px] sm:text-[10px] font-bold uppercase tracking-widest py-1"
             >
-              <span style={isWeekend ? { color: accentColor } : { color: "#9ca3af" }}>
+              <span style={isWeekend ? { color: accentColor } : { color: dark ? "#9ca3af" : "#6b7280" }}>
                 {h}
               </span>
             </div>
@@ -48,6 +50,7 @@ export function CalendarGrid({
             accentMuted={accentMuted}
             onClick={onDayClick}
             onHover={onDayHover}
+            dark={dark}
           />
         ))}
       </div>

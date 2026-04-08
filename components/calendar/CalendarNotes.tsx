@@ -34,7 +34,7 @@ export function CalendarNotes({ monthKey, value, accentColor, onChange }: Calend
             value={value}
             onChange={(e) => onChange(monthKey, e.target.value)}
             style={linedBackground}
-            className="w-full h-full min-h-[220px] bg-transparent resize-none outline-none text-sm text-gray-600 dark:text-zinc-300 placeholder:text-gray-400"
+            className="w-full h-full min-h-55 bg-transparent resize-none outline-none text-sm text-gray-600 dark:text-zinc-300 placeholder:text-gray-400"
             placeholder="Write your memos here..."
           />
         </div>
@@ -61,7 +61,7 @@ export function CalendarNotes({ monthKey, value, accentColor, onChange }: Calend
               value={value}
               onChange={(e) => onChange(monthKey, e.target.value)}
               style={linedBackground}
-              className="w-full h-full min-h-[220px] bg-transparent resize-none outline-none text-sm text-gray-700 dark:text-zinc-200 placeholder:text-gray-400 dark:placeholder:text-zinc-600"
+              className="w-full h-full min-h-55 bg-transparent resize-none outline-none text-sm text-gray-700 dark:text-zinc-200 placeholder:text-gray-400 dark:placeholder:text-zinc-600"
               placeholder="Write your memos here..."
             />
           </div>

@@ -72,8 +72,8 @@ export function CalendarPage() {
     anim === "out"
       ? "animate-flip-out"
       : anim === "in"
-      ? "animate-flip-in"
-      : "";
+        ? "animate-flip-in"
+        : "";
 
   const gridAnimClass =
     anim === "out"
@@ -81,25 +81,25 @@ export function CalendarPage() {
         ? "animate-slide-out-left"
         : "animate-slide-out-right"
       : anim === "in"
-      ? direction === "next"
-        ? "animate-slide-in-right"
-        : "animate-slide-in-left"
-      : "";
+        ? direction === "next"
+          ? "animate-slide-in-right"
+          : "animate-slide-in-left"
+        : "";
 
   const monthNote = notes[mk] ?? "";
   const hasRange = dateRange.start && dateRange.end;
 
   return (
     <main
-      className="min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 transition-colors duration-500 ease-in-out"
+      className={`min-h-screen flex flex-col items-center justify-center py-12 px-4 sm:px-6 transition-colors duration-500 ease-in-out ${dark ? "dark" : ""}`}
       style={{
         background: dark
-          ? "linear-gradient(160deg, #242426 0%, #121212 100%)" // Slightly deeper, richer dark wall
+          ? "linear-gradient(160deg, #242426 0%, #121212 100%)"
           : "linear-gradient(160deg, #d4d1ce 0%, #c4c1be 50%, #b8b5b2 100%)",
       }}
     >
-      <div className="w-full max-w-[440px] flex flex-col relative perspective-1000">
-        
+      <div className="w-full max-w-110 flex flex-col relative perspective-1000">
+
         {/* Top bar controls */}
         <div className="flex justify-end mb-4 px-2 z-20">
           <ThemeToggle dark={dark} onToggle={toggle} />
@@ -113,7 +113,7 @@ export function CalendarPage() {
               background: dark
                 ? "radial-gradient(circle at 35% 35%, #71717a 0%, #27272a 50%, #09090b 100%)"
                 : "radial-gradient(circle at 35% 35%, #f4f4f5 0%, #a1a1aa 50%, #52525b 100%)",
-              boxShadow: dark 
+              boxShadow: dark
                 ? "0 4px 6px rgba(0,0,0,0.8), inset 0 2px 4px rgba(255,255,255,0.15)"
                 : "0 3px 6px rgba(0,0,0,0.4), inset 0 2px 4px rgba(255,255,255,0.4)",
             }}
@@ -122,9 +122,11 @@ export function CalendarPage() {
 
         {/* Calendar Body */}
         <div
-          className="rounded-2xl overflow-hidden bg-white dark:bg-[#18181b] text-zinc-900 dark:text-zinc-100 transition-all duration-500 ease-in-out relative z-10 ring-1 ring-black/5 dark:ring-white/5"
+          className="rounded-2xl overflow-hidden transition-all duration-500 ease-in-out relative z-10 ring-1 ring-black/5 dark:ring-white/5"
           style={{
-            boxShadow: dark 
+            backgroundColor: dark ? "#18181b" : "#ffffff", 
+            color: dark ? "#f4f4f5" : "#18181b", 
+            boxShadow: dark
               ? "0 10px 40px -10px rgba(0,0,0,0.8), 0 20px 60px -15px rgba(0,0,0,0.6)"
               : "0 4px 12px rgba(0,0,0,0.08), 0 16px 40px rgba(0,0,0,0.14), 0 40px 80px rgba(0,0,0,0.12)",
           }}
@@ -156,14 +158,14 @@ export function CalendarPage() {
               animClass={gridAnimClass}
               onDayClick={handleDayClick}
               onDayHover={handleDayHover}
+              dark={dark}
             />
           </div>
 
           {/* Date Range Banner */}
           <div
-            className={`transition-all duration-300 ease-in-out overflow-hidden ${
-              hasRange ? "max-h-16 opacity-100 mb-4" : "max-h-0 opacity-0 mb-0"
-            }`}
+            className={`transition-all duration-300 ease-in-out overflow-hidden ${hasRange ? "max-h-16 opacity-100 mb-4" : "max-h-0 opacity-0 mb-0"
+              }`}
           >
             <div
               className="mx-4 mt-1 flex items-center justify-between rounded-xl px-4 py-3 text-xs border border-transparent dark:border-white/5"
@@ -171,7 +173,7 @@ export function CalendarPage() {
             >
               <div className="flex items-center gap-3">
                 <span
-                  className="w-2 h-2 rounded-full flex-shrink-0 animate-pulse"
+                  className="w-2 h-2 rounded-full shrink-0 animate-pulse"
                   style={{ backgroundColor: theme.accentColor }}
                 />
                 <span className="font-semibold tracking-wide" style={{ color: theme.accentColor }}>
