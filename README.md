@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Interactive Wall Calendar Component
 
-## Getting Started
+A highly functional, responsive, and aesthetically pleasing interactive calendar component built for the web. Inspired by physical wall calendars, this project translates a static design concept into a dynamic React component with robust state management and a focus on User Experience (UX).
 
-First, run the development server:
+## ✨ Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Core Requirements Fulfilled
+* **Physical Aesthetic:** Emulates a real wall calendar with a 3D-styled spiral binding, wall shadow effects, and dynamic geometric image headers.
+* **Date Range Selector:** Robust selection logic allowing users to pick start and end dates seamlessly, featuring distinct visual states for the start, end, and in-between days.
+* **Integrated Notes Section:** A functional, lined notepad area for monthly memos. 
+* **Fully Responsive:** Uses Flexbox/Grid to present a side-by-side layout on desktop and gracefully collapses into a stacked, accordion-style layout for mobile touch screens.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Creative Liberties & Extras
+* **Local Storage Persistence:** Selected date ranges, monthly notes, and theme preferences are saved to the browser's `localStorage`, ensuring data survives page reloads safely without Next.js hydration mismatches.
+* **Dark Mode:** A custom, animated theme toggle that dynamically adjusts UI colors, gradients, and contrast for optimal low-light viewing.
+* **Monthly Theming:** Each month features a unique hero image and color palette (accent colors and muted backgrounds) that propagate throughout the component.
+* **Holiday Markers:** Important dates are subtly highlighted with accent dots below the date numbers.
+* **Keyboard Accessibility:** Global keyboard listeners allow users to navigate between months using the `ArrowLeft` and `ArrowRight` keys.
+* **Fluid Animations:** Smooth CSS transitions for navigating between months (sliding grids, flipping headers).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+* **Framework:** Next.js / React 
+* **Language:** TypeScript 
+* **Styling:** Tailwind CSS (with custom arbitrary values for complex gradients/shadows)
+* **Icons/Images:** Next/Image for optimized hero images, inline SVGs for UI elements.
 
-## Learn More
+## 🏗 Architectural Choices
 
-To learn more about Next.js, take a look at the following resources:
+* **Modular Components:** The monolithic calendar is broken down into single-responsibility components (`CalendarGrid`, `CalendarDay`, `CalendarHero`, `CalendarNotes`) for maintainability.
+* **Custom Hooks:** Heavy state logic is decoupled from the view layer using custom hooks (`useDateRange`, `useDarkMode`, `useNotes`).
+* **Pure Utility Functions:** Calendar math and grid generation are isolated in `lib/calendar.ts` making them easily testable and independent of React.
+* **Client-Side Storage:** Built entirely as a frontend application, relying strictly on native web storage APIs to meet the "Frontend Only" constraint without sacrificing UX.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🚀 How to Run Locally
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repository-url>
+   cd wall-calendar
