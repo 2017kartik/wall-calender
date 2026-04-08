@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+
+:root {
+  --accent: #1e6fcc;
+  --accent-light: #4d94e8;
+  --accent-muted: rgba(30, 111, 204, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+}
+
+.notes-area {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    #e2e8f0 27px,
+    #e2e8f0 28px
+  );
+  line-height: 28px;
+}
+
+.dark .notes-area {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    #334155 27px,
+    #334155 28px
+  );
+}
+
+.perspective-container {
+  perspective: 1200px;
+}
+
+.calendar-card {
+  transform-style: preserve-3d;
+}

@@ -1,0 +1,92 @@
+"use client";
+
+import { DayCell, DateString } from "@/types";
+
+interface CalendarDayProps {
+  cell: DayCell;
+  accentColor: string;
+  accentMuted: string;
+  onClick: (date: DateString) => void;
+  onHover: (date: DateString | null) => void;
+}
+
+export function CalendarDay({
+  cell,
+  accentColor,
+  accentMuted,
+  onClick,
+  onHover,
+}: CalendarDayProps) {
+  const { date, dayOfMonth, isCurrentMonth, isToday, rangeState, holiday } = cell;
+
+  // Handle the background shapes for the range connections
+  let bgClass = "";
+  let bgColor = "transparent";
+
+  if (rangeState === "start") {
+    bgClass = "rounded-l-full";
+    bgColor = accentMuted;
+  } else if (rangeState === "end") {
+    bgClass = "rounded-r-full";
+    bgColor = accentMuted;
+  } else if (rangeState === "between") {
+    bgClass = ""; 
+    bgColor = accentMuted;
+  } else if (rangeState === "start-end") {
+    bgClass = "rounded-full"; 
+    bgColor = "transparent"; 
+  }
+
+  const isSelected = rangeState === "start" || rangeState === "end" || rangeState === "start-end";
+
+  // Seamlessly handle dark mode text contrast using Tailwind
+  let textClass = "";
+  if (isSelected) {
+    textClass = "text-white";
+  } else if (isCurrentMonth) {
+    textClass = "text-zinc-800 dark:text-zinc-100"; // High contrast for active days
+  } else {
+    textClass = "text-zinc-400 dark:text-zinc-600"; // Muted for out-of-month days
+  }
+
+  return (
+    <div
+      className="relative flex items-center justify-center h-10 w-full"
+      onMouseEnter={() => onHover(date)}
+      onMouseLeave={() => onHover(null)}
+      title={holiday || undefined}
+    >
+      {/* Range Connector Background */}
+      {rangeState !== "none" && (
+        <div
+          className={`absolute inset-y-0 w-full ${bgClass}`}
+          style={{ backgroundColor: rangeState === "start-end" ? "transparent" : bgColor }}
+        />
+      )}
+
+      {/* Interactive Day Button */}
+      <button
+        onClick={() => onClick(date)}
+        className={`relative z-10 w-8 h-8 flex items-center justify-center rounded-full text-sm transition-transform duration-200
+          ${textClass}
+          ${isToday && !isSelected ? "border border-gray-300 dark:border-zinc-500 font-bold" : ""}
+          ${!isCurrentMonth ? "opacity-80" : "hover:scale-110"}
+        `}
+        style={{
+          backgroundColor: isSelected ? accentColor : "transparent",
+          fontWeight: isSelected ? "bold" : "normal",
+        }}
+        aria-label={`Select ${date}`}
+      >
+        {dayOfMonth}
+        
+        {holiday && !isSelected && (
+          <span 
+            className="absolute bottom-0.5 w-1 h-1 rounded-full" 
+            style={{ backgroundColor: accentColor }}
+          />
+        )}
+      </button>
+    </div>
+  );
+}
